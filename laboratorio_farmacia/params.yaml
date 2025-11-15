@@ -1,0 +1,18 @@
+# Configuración del pipeline AutoML
+data:
+  file: "data/dataset_v1.csv"
+  target: "cantidad_vendida"
+
+preprocessing:
+  numeric_features: ["precio", "edad_cliente", "descuento"]
+  categorical_features: ["medicamento", "categoria", "ciudad"]
+
+models:
+  LinearRegression:
+    fit_intercept: true
+  RandomForest:
+    n_estimators: 100
+    max_depth: 10
+  GradientBoosting:
+    n_estimators: 100
+    learning_rate: 0.1

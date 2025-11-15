@@ -1,0 +1,73 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/dataset_v1.csv
+      hash: md5
+      md5: c45510d15d1e486e7c8d677ad8c1902f
+      size: 649
+    - path: params.yaml
+      hash: md5
+      md5: 82c4398448456388f4bff3b223831d0d
+      size: 431
+    - path: src/preprocess.py
+      hash: md5
+      md5: b510c7ccf6061572de7d2dc774d691cf
+      size: 1475
+    outs:
+    - path: models/preprocessor.joblib
+      hash: md5
+      md5: ae35693e3e20e98d401b36ad8c40e63d
+      size: 3268
+    - path: models/processed_data.joblib
+      hash: md5
+      md5: 8c4369c5c8c911a6118ae7a68d3520c2
+      size: 2076
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: models/processed_data.joblib
+      hash: md5
+      md5: 8c4369c5c8c911a6118ae7a68d3520c2
+      size: 2076
+    - path: params.yaml
+      hash: md5
+      md5: 82c4398448456388f4bff3b223831d0d
+      size: 431
+    - path: src/train.py
+      hash: md5
+      md5: fcc894be1386f22405a466cea13e9304
+      size: 2462
+    params:
+      params.yaml:
+        models:
+          LinearRegression:
+            fit_intercept: true
+          RandomForest:
+            n_estimators: 100
+            max_depth: 10
+          GradientBoosting:
+            n_estimators: 100
+            learning_rate: 0.1
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 00b9e1afcf62f247e6f677f2b95bc9ac
+      size: 441
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: metrics.json
+      hash: md5
+      md5: 00b9e1afcf62f247e6f677f2b95bc9ac
+      size: 441
+    - path: src/evaluate.py
+      hash: md5
+      md5: 0d905d4ac9382826a06bd95630430cbb
+      size: 1187
+    outs:
+    - path: evaluation_summary.json
+      hash: md5
+      md5: 86ad48dbc978b8816bcbe82f7ffee8cb
+      size: 495

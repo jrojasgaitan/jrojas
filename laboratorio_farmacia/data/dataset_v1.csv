@@ -1,0 +1,11 @@
+fecha,medicamento,categoria,precio,cantidad_vendida,edad_cliente,ciudad,descuento
+2024-01-01,Paracetamol,Analgesico,5.5,25,45,Lima,0.0
+2024-01-01,Vitamina C,Suplemento,12.0,15,30,Lima,0.1
+2024-01-02,Amoxicilina,Antibiotico,8.75,8,60,Arequipa,0.0
+2024-01-02,Ibuprofeno,Analgesico,6.25,32,35,Arequipa,0.05
+2024-01-03,Omeprazol,Digestivo,15.5,12,50,Trujillo,0.0
+2024-01-03,Antigripal,Resfriado,18.0,20,28,Trujillo,0.15
+2024-01-04,Curitas,Primeros_Auxilios,3.2,45,22,Lima,0.0
+2024-01-04,Alcohol,Primeros_Auxilios,4.8,30,25,Lima,0.0
+2024-01-05,Antiacido,Digestivo,9.9,18,40,Arequipa,0.1
+2024-01-05,Jarabe_Tos,Resfriado,22.5,10,55,Arequipa,0.0

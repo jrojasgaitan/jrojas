@@ -1,0 +1,31 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - params.yaml
+      - data/dataset_v1.csv
+    outs:
+      - models/preprocessor.joblib
+      - models/processed_data.joblib
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - params.yaml
+      - models/processed_data.joblib
+    params:
+      - models
+    metrics:
+      - metrics.json:
+          cache: false
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - metrics.json
+    metrics:
+      - evaluation_summary.json:
+          cache: false
